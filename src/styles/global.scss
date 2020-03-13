@@ -1,0 +1,51 @@
+@font-face{
+    font-family:'CassandreTwo';
+    src: url('../../static/fonts/Cassandre2_regular-normal-normal/CassandraTwo.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+@font-face {
+        font-family: 'Cassannet-Regular';
+        src: url('../../static/fonts/Cassannet_simple-normal-normal/Cassannet-Regular.ttf') format("truetype");
+        font-style: normal;
+        font-weight: normal;
+      }
+@font-face{
+    font-family: 'Bifur';
+    src: url('../../static/fonts/Bifur/BIFUR.ttf') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face{
+font-family: 'pinot-grigio-modern', sans-serif;
+font-style: normal;
+font-weight: 300;
+}
+/* Color Theme Swatches in Hex */
+$theme-grey: #6C6E8C;
+$theme-white: #D9D3C1;
+$theme-maroon: #A61212;
+$theme-red: #8C1818;
+$theme-black: #0D0D0D;
+body{
+    background-color: $theme-white;
+    font-family: 'Cassannet-Regular' !important;
+    font-weight: normal;
+    font-style: normal;
+    h1{
+    font-family:'Bifur';
+    font-weight: normal;
+    font-style: normal;
+    color: $theme-maroon;
+    background-color: $theme-grey;
+  //  border: 1px solid $theme-black;
+  //  border-radius: 50px;
+    display: inline-flex;
+    padding:8px;
+    }
+}
+header{
+    background-color: $theme-black;
+}

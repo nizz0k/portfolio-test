@@ -1,0 +1,12 @@
+@font-face{
+    font-family:'Cassandre2';
+    src: url('../fonts/Cassandre2_regular-normal-normal/CassandraTwo.ttf'), format('truetype');
+    }
+
+@font-face {
+        font-family: 'Cassannet - simple';
+        src: url("../fonts/Cassannet_simple-normal-normal/Cassannet-Regular.ttf") format("truetype");
+        font-style: normal;
+        font-weight: normal;
+      }
+      
