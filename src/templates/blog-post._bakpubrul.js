@@ -2,10 +2,9 @@ import React from "react"
 import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-//,import Img from 'gatsby-image'
+import Img from 'gatsby-image'
 
 const Project = ({data}) => {
-console.log(data);
 const post = data.nodeProjects;
 
  return (
@@ -27,23 +26,25 @@ Project.propTypes = {
 export const query = graphql`
 query($ProjectId: String!) {
   nodeProjects(id: { eq: $ProjectId }) {
-      body {
-        processed
-        summary
-      }
       id
       title
-      field_project_image{
+      body {
+        processed
+      }
+      path {
+        alias
+      }
+      field_project_image {
         alt
       }
       relationships {
         field_project_image {
           localFile {
-            publicURL
+              publicURL
           }
         }
       }
-    }
   }
+}
 `
 export default Project;

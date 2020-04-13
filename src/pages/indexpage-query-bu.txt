@@ -1,8 +1,3 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import { graphql, StaticQuery } from "gatsby"
-
-const Blog = () => (
 <StaticQuery
     query={graphql`
       query {
@@ -32,24 +27,3 @@ const Blog = () => (
   }
 }
 `}
-
-render={ data => (
-<layout>
-<div>
-    <h1>Our Dope-Ass posts</h1>
-    { data.allNodeProjects.edges.map(({ node }) => (
-      <div>
-        <h3>{ node.title }</h3>
-        <div dangerouslySetInnerHTML={{ __html: node.body.value }} />
-      </div>
-    ))}
-  </div>
-
-</layout>
-)}
-/>
-)
-
-
-
-export default Blog

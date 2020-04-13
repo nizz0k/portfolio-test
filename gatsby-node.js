@@ -7,29 +7,28 @@
 // You can delete this file if you're not using it
 const path = require(`path`)
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-  return graphql(`
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+  const projects = await graphql(`
     {
-     allNodeProjects {
-       edges {
-         node {
-           title
-           id
-         }
-       }
-     }
+    allNodeProjects {
+      nodes {
+        id
+        title
+        path {
+          alias
+        }
+      }
     }
-  `
-  ).then(result => {
-    result.data.allNodeProjects.edges.forEach(({ node }) => {
-      createPage({
-        path: node.title,
-        component: path.resolve(`./src/templates/blog-post.js`),
-        context: {
-          id: node.id,
-        },
-      })
-    })
+  }`
+      );
+projects.data.allNodeProjects.nodes.map(projectData =>
+  createPage({
+    path: projectData.path.alias,
+    component: path.resolve('src/templates/blog-post.js'),
+    context: {
+      ProjectId: projectData.id, 
+    },
   })
+  );
 }
