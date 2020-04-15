@@ -44,8 +44,19 @@ body{
   //  border-radius: 50px;
     display: inline-flex;
     padding:8px;
+    margin-bottom: 0;
     }
 }
 header{
     background-color: $theme-black;
+}
+h1.hero{
+    color: $theme-black;
+    background-color: $theme-white;
+    border-radius: 15px;
+    border: 1px solid $theme-maroon;
+    margin-bottom: 0;
+}
+.hero-head-line{
+    margin: 0 auto;
 }

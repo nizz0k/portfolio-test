@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 import { graphql, StaticQuery } from "gatsby"
 
 const Blog = () => (
@@ -20,8 +21,8 @@ const Blog = () => (
             id
             localFile {
               childImageSharp{
-                sizes(maxWidth: 1250){
-                  ...GatsbyImageSharpSizes
+                fluid(maxWidth: 50){
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -40,6 +41,7 @@ render={ data => (
     { data.allNodeProjects.edges.map(({ node }) => (
       <div>
         <h3>{ node.title }</h3>
+        <Img fluid={node.relationships.field_project_image.localFile.childImageSharp.fluid} />
         <div dangerouslySetInnerHTML={{ __html: node.body.value }} />
       </div>
     ))}

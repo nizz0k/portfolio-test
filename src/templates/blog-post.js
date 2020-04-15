@@ -5,13 +5,13 @@ import Layout from "../components/layout"
 import Img from 'gatsby-image'
 
 const Project = ({data}) => {
-console.log(data.nodeProjects.field_project_image.relationships.localFile.childImageSharp.fluid );
-const post = data.nodeProjects;
 
+const post = data.nodeProjects;
+console.log(post.relationships.field_project_image.localFile.childImageSharp.fluid);
  return (
   <Layout>
    <h1>{post.title}</h1>
-   <Img src={post.relationships.field_project_image.localFile.childImageSharp.fluid} alt={data.nodeProjects.field_project_image.alt} />
+   <Img fluid={post.relationships.field_project_image.localFile.childImageSharp.fluid} alt={data.nodeProjects.field_project_image.alt} />
    <div
        dangerouslySetInnerHTML={{ __html: post.body.processed }}
      />
@@ -41,9 +41,9 @@ query($ProjectId: String!) {
           localFile {
             publicURL
             childImageSharp{
-              fluid(maxWidth: 600) {
-         ...GatsbyImageSharpFluid
-             }
+              fluid(maxWidth:600) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
