@@ -2,16 +2,16 @@ import React from "react"
 import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-//,import Img from 'gatsby-image'
+import Img from 'gatsby-image'
 
 const Project = ({data}) => {
-console.log(data);
+console.log(data.nodeProjects.field_project_image.relationships.localFile.childImageSharp.fluid );
 const post = data.nodeProjects;
 
  return (
   <Layout>
    <h1>{post.title}</h1>
-   <img src={data.nodeProjects.relationships.field_project_image.localFile.publicURL} alt={data.nodeProjects.field_project_image.alt} />
+   <Img src={post.relationships.field_project_image.localFile.childImageSharp.fluid} alt={data.nodeProjects.field_project_image.alt} />
    <div
        dangerouslySetInnerHTML={{ __html: post.body.processed }}
      />
@@ -27,7 +27,7 @@ Project.propTypes = {
 export const query = graphql`
 query($ProjectId: String!) {
   nodeProjects(id: { eq: $ProjectId }) {
-      body {
+    body {
         processed
         summary
       }
@@ -40,10 +40,16 @@ query($ProjectId: String!) {
         field_project_image {
           localFile {
             publicURL
+            childImageSharp{
+              fluid(maxWidth: 600) {
+         ...GatsbyImageSharpFluid
+             }
+            }
           }
         }
       }
     }
   }
+
 `
 export default Project;
