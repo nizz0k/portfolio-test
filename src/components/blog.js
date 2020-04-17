@@ -14,6 +14,14 @@ const Blog = () => (
         title
         body {
           value
+          processed
+          summary
+        }
+        path{
+          alias
+        }
+        field_project_image{
+          alt
         }
         created
         relationships {
@@ -21,8 +29,8 @@ const Blog = () => (
             id
             localFile {
               childImageSharp{
-                fluid(maxWidth: 50){
-                  ...GatsbyImageSharpFluid
+                fixed(width: 50){
+                  ...GatsbyImageSharpFixed
                 }
               }
             }
@@ -39,9 +47,10 @@ render={ data => (
 <div>
     <h1>Our Dope-Ass posts</h1>
     { data.allNodeProjects.edges.map(({ node }) => (
-      <div>
+   
+   <div>
         <h3>{ node.title }</h3>
-        <Img fluid={node.relationships.field_project_image.localFile.childImageSharp.fluid} />
+        <Img fixed={node.relationships.field_project_image.localFile.childImageSharp.fixed} />
         <div dangerouslySetInnerHTML={{ __html: node.body.value }} />
       </div>
     ))}

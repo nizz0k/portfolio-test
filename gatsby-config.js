@@ -1,9 +1,21 @@
 module.exports = {
   siteMetadata: {
-    title: `Just Another DEV Site`,
+    title: `SiteName PlaceHolder`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
-  },
+    menuLinks: [{
+      name: 'Home',
+      link: '/'
+    },
+    {
+      name: 'Blog',
+      link: '/blog'
+    },
+    {
+      name: 'About',
+      link: '/About'
+    }
+  ]},
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
